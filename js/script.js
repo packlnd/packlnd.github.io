@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $( '.nav' ).on( 'click', 'a', function(e) {
+    $( '.nav' ).on( 'click', 'a[href^=\'#\']', function(e) {
         e.preventDefault();
         goToByScroll(this.id);
     });
