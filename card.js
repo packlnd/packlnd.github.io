@@ -14,6 +14,12 @@ $(function() {
         });
     }
 
+    function shorten_if_long(name) {
+        if (name.length <= 14)
+            return name;
+        return name.slice(0,14) + "...";
+    }
+
     function draw_card(data) {
         $.get({
             url: "https://shrouded-oasis-42259.herokuapp.com",
@@ -31,6 +37,7 @@ $(function() {
             .css("border", "solid 1px #D3D3D3")
             .css("border-radius", "3px")
             .css("position", "relative")
+            .css("z-index", -2)
             .css("padding", 10);
         var img = $("<img />", {src: data['avatar_url']})
             .css("position", "absolute")
@@ -40,7 +47,7 @@ $(function() {
             .css("max-height", 102);
         var name = $("<h2>")
             .css("position", "absolute")
-            .html(data['name'])
+            .html(shorten_if_long(data['name']))
             .css("color", "rgb(51,51,51)")
             .css("margin", 0)
             .css("top", 10)
@@ -61,11 +68,20 @@ $(function() {
                 data['followers'],
                 "Followers")
             .css("left", 250);
+        var ico = $("<img/>", {
+            src : "http://packlnd.github.io/icon.ico"
+            })
+            .css("position", "absolute")
+            .css("top", 5)
+            .css("right", 5)
+            .css("opacity", 0.1)
+            .css("z-index", -1);
         card.html(img)
             .append(name)
             .append(uname)
             .append(repo)
-            .append(followers);
+            .append(followers)
+            .append(ico);
     }
 
     function create_stats_div(n, s) {
