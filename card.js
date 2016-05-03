@@ -9,8 +9,8 @@ $(function() {
   if ($("#goodreads-card").length) { create_goodreads_card(); }
 
   function create_goodreads_card() {
-    set_loading($("#goodreads-card"));
     var uid = $("#goodreads-card").html();
+    set_loading($("#goodreads-card"));
     $.get({
       url: SERVER + '/goodreads',
       data: {'uid': uid},
@@ -108,8 +108,8 @@ $(function() {
   function draw_card(card, data) {
     card
       .html("")
-      //.width(300)
-      //.height(100)
+      .width(300)
+      .height(100)
       //.css("font-family", "Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'")
       //.css("background-color", "#EEE")
       //.css("border", "solid 1px #D3D3D3")
@@ -205,8 +205,8 @@ $(function() {
   function set_loading(card) {
     card
       .html("Loading...")
-      .width(300)
-      .height(100)
+      .width(322)
+      .height(122)
       .css("font-family", "Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'")
       .css("background-color", "#EEE")
       .css("border", "solid 1px #D3D3D3")
